@@ -9,7 +9,8 @@
         tools:ignore="ProtectedPermissions" />
 
     <!-- install to /system/priv-app to grant the permission -->
-    <uses-permission android:name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME" />
+    <uses-permission android:name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME"
+        tools:ignore="ProtectedPermissions" />
 
     <!-- use only when Scoped Directory Access API is not available -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -26,6 +27,7 @@
         android:roundIcon="@mipmap/product_logo_fcmformojo_round_launcher_color_48"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_security_config"
         tools:ignore="GoogleAppIndexingWarning">
         <service
             android:name=".service.FirebaseMessagingService"
