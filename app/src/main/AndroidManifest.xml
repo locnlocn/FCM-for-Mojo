@@ -4,16 +4,18 @@
     package="moe.shizuku.fcmformojo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission
         android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
 
     <!-- install to /system/priv-app to grant the permission -->
-    <uses-permission android:name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME"
+    <uses-permission
+        android:name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME"
         tools:ignore="ProtectedPermissions" />
 
     <!-- use only when Scoped Directory Access API is not available -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- shizuku v2 -->
     <uses-permission-sdk-23 android:name="moe.shizuku.manager.permission.API_V23" />
@@ -24,23 +26,16 @@
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/product_logo_fcmformojo_launcher_color_48"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/product_logo_fcmformojo_round_launcher_color_48"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:networkSecurityConfig="@xml/network_security_config"
         tools:ignore="GoogleAppIndexingWarning">
         <service
             android:name=".service.FirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-        <service
-            android:name=".service.FirebaseInstanceIDService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
@@ -56,11 +51,11 @@
 
         <activity
             android:name=".GroupWhitelistActivity"
-            android:label="@string/settings_per_group_title"/>
+            android:label="@string/settings_per_group_title" />
 
         <activity
             android:name=".DiscussWhitelistActivity"
-            android:label="@string/settings_per_group_title"/>
+            android:label="@string/settings_per_group_title" />
 
         <receiver
             android:name=".receiver.FFMBroadcastReceiver"
@@ -99,8 +94,8 @@
 
         <activity
             android:name="com.android.billingclient.api.ProxyBillingActivity"
-            android:theme="@style/AppTheme.Translucent"
             android:exported="false"
+            android:theme="@style/AppTheme.Translucent"
             tools:replace="android:theme" />
 
     </application>
